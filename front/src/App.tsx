@@ -1,12 +1,11 @@
 import React from 'react';
-import test from './App.module.scss';
+import './App.less';
+import { Button } from 'antd';
 
-const App = () => {
-  return (
-    <div className={test.red}>
-      here
-    </div>
-  );
-}
+const App = () => (
+  <div>
+    <Button type="primary">Button</Button>
+  </div>
+);
 
 export default App;

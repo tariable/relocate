@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.less';
-import { Button } from 'antd';
+import Header from './Header';
 
-const App = () => (
+const App: React.FC = () => (
   <div>
-    <Button type="primary">Button</Button>
+    <Header />
   </div>
 );
 

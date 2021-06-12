@@ -1,10 +1,9 @@
-import { lazy } from 'react';
 import paths from './paths';
 import IRoute from '../interfaces/IRoute';
 
-const MainPage = lazy(() => import('../pages/MainPage/MainPage'));
-const AccommodationList = lazy(() => import('../pages/AccommodationList/AccommodationList'));
-const AccommodationView = lazy(() => import('../pages/AccommodationView/AccommodationView'));
+import MainPage from '../pages/MainPage/MainPage';
+import AccommodationList from '../pages/AccommodationList/AccommodationList';
+import AccommodationView from '../pages/AccommodationView/AccommodationView';
 
 const routes: IRoute[] = [
   {

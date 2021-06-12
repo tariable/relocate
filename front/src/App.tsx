@@ -9,25 +9,23 @@ import Header from './common/Header/Header';
 import Footer from './common/Footer/Footer';
 
 const App: React.FC = () => (
-  <div>
+  <BrowserRouter>
     <Header />
-    <BrowserRouter>
-      <Switch>
-        {Routes.map((route) => (
-          <Route
-            key={route.name}
-            path={route.path}
-            exact={route.exact}
-            render={(props: RouteComponentProps<any>) => (
-              <route.component {...props} {...route.props} />
-            )}
-          />
-        ))}
-        <Route component={() => <div>not found</div>} />
-      </Switch>
-    </BrowserRouter>
+    <Switch>
+      {Routes.map((route) => (
+        <Route
+          key={route.name}
+          path={route.path}
+          exact={route.exact}
+          render={(props: RouteComponentProps<any>) => (
+            <route.component {...props} {...route.props} />
+          )}
+        />
+      ))}
+      <Route component={() => <div>not found</div>} />
+    </Switch>
     <Footer />
-  </div>
+  </BrowserRouter>
 );
 
 export default App;

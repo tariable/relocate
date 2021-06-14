@@ -1,9 +1,9 @@
 import paths from './paths';
 import IRoute from '../interfaces/IRoute';
 
-import MainPage from '../pages/MainPage/MainPage';
-import AccommodationList from '../pages/AccommodationList/AccommodationList';
-import AccommodationView from '../pages/AccommodationView/AccommodationView';
+import MainPage from '../components/MainPage/MainPage';
+import AccommodationListPage from '../components/AccommodationListPage/AccommodationListPage';
+import AccommodationView from '../components/AccommodationView/AccommodationView';
 
 const routes: IRoute[] = [
   {
@@ -16,7 +16,7 @@ const routes: IRoute[] = [
     path: paths.accommodationList,
     exact: true,
     name: 'Accommodation List',
-    component: AccommodationList,
+    component: AccommodationListPage,
   },
   {
     path: paths.accommodationList,

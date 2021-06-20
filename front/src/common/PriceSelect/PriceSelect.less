@@ -1,6 +1,36 @@
 .price-select {
-  .ant-btn {
-    height: 40px;
+  margin-right: 10px;
+
+  .ant-collapse {
     border-radius: 7px;
+
+    .ant-collapse-item:last-child {
+      border-radius: 5px;
+    }
+
+    .ant-collapse-item {
+      width: 300px;
+      height: 60px;
+
+      .ant-collapse-header {
+        height: 60px;
+        color: #7B7C7E;
+        border: none;
+        line-height: 33px;
+      }
+
+      .ant-collapse-content:last-child {
+        border-radius: 7px;
+      }
+
+      .ant-collapse-content-box .ant-input-group {
+        display: flex;
+        justify-content: space-between;
+
+        .ant-input {
+          width: 130px;
+        }
+      }
+    }
   }
 }

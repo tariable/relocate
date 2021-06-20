@@ -32,21 +32,19 @@ const metroArr = [
 ];
 
 const MetroSelect: React.FC<MetroSelectType> = ({ mode }: MetroSelectType) => (
-  <div className="metro-select">
-    <Select
-      size="large"
-      mode={mode}
-      allowClear
-      showSearch
-      placeholder="Метро"
-    >
-      {metroArr.map((metro) => (
-        <Option value={metro.name} key={metro.name}>
-          <Badge color={metro.color} text={metro.name} />
-        </Option>
-      ))}
-    </Select>
-  </div>
+  <Select
+    size="large"
+    mode={mode}
+    allowClear
+    showSearch
+    placeholder="Метро"
+  >
+    {metroArr.map((metro) => (
+      <Option value={metro.name} key={metro.name}>
+        <Badge color={metro.color} text={metro.name} />
+      </Option>
+    ))}
+  </Select>
 );
 
 MetroSelect.defaultProps = {

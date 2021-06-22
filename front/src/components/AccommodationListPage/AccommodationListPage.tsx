@@ -5,6 +5,7 @@ import FiltersBlock from './FiltersBlock/FiltersBlock';
 import './AccommodationListPage.less';
 import AccommodationList from '../../common/AccommodationList/AccommodationList';
 import SortBlock from './SortBlock/SortBlock';
+import MapToggleBlock from './MapToggleBlock/MapToggleBlock';
 
 const AccommodationListPage: React.FC<IPage> = () => {
   const breadcrumbs = [{ text: 'Главная', link: '/' }, { text: 'Поиск' }];
@@ -15,7 +16,12 @@ const AccommodationListPage: React.FC<IPage> = () => {
         <SortBlock />
       </div>
       <div className="list-body">
-        <FiltersBlock />
+        <div className="filter-menu-block">
+          <MapToggleBlock />
+          <div>
+            <FiltersBlock />
+          </div>
+        </div>
         <AccommodationList />
       </div>
     </div>

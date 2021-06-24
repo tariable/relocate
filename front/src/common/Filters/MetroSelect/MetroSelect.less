@@ -47,3 +47,40 @@
 }
 
 
+.filter-metro-select {
+  margin-bottom: 20px;
+  margin-right: 0;
+  min-height: 50px;
+  max-height: none;
+
+  .ant-select {
+    min-height: 50px;
+
+    .ant-select-selector {
+      min-height: 50px;
+
+      .ant-select-selection-placeholder, .ant-badge-status-text {
+        font-size: 14px;
+      }
+
+      .ant-select-selection-item {
+        border-radius: 7px;
+      }
+    }
+  }
+
+  .ant-badge-status-text {
+    font-size: 14px;
+  }
+
+  .ant-select-single.ant-select-lg:not(.ant-select-customize-input) .ant-select-selector {
+    height: 50px;
+  }
+
+  .ant-select-single.ant-select-lg:not(.ant-select-customize-input):not(.ant-select-customize-input) .ant-select-selection-search-input {
+    height: 48px;
+  }
+
+
+}
+

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from 'antd';
-import AccommodationList from '../../../common/AccommodationList/AccommodationList';
+import AccommodationList from '../../../common/Accommodation/AccommodationList/AccommodationList';
 import './AccommodationSuggestions.less';
 
 const AccommodationSuggestions: React.FC = () => (

@@ -7,7 +7,7 @@ const { Panel } = Collapse;
 
 const PriceSelect: React.FC = () => (
   <Collapse
-    expandIcon={({ isActive }) => <DownOutlined rotate={isActive ? 180 : 0} />}
+    expandIcon={({ isActive }) => <DownOutlined style={{ color: '#bfbfbf' }} rotate={isActive ? 180 : 0} />}
     expandIconPosition="right"
   >
     <Panel key="1" header="Цена">

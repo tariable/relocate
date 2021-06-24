@@ -3,7 +3,7 @@ import IPage from '../../interfaces/IPage';
 import Breadcrumbs from '../../common/Breadcrumbs/Breadcrumbs';
 import FiltersBlock from './FiltersBlock/FiltersBlock';
 import './AccommodationListPage.less';
-import AccommodationList from '../../common/AccommodationList/AccommodationList';
+import AccommodationList from '../../common/Accommodation/AccommodationList/AccommodationList';
 import SortBlock from './SortBlock/SortBlock';
 import MapToggleBlock from './MapToggleBlock/MapToggleBlock';
 

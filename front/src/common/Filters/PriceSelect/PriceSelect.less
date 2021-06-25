@@ -52,15 +52,14 @@
 
 .filter-price-select {
   width: 280px;
+  margin-bottom: 20px;
 
   .ant-collapse {
-    max-height: 50px;
     border-radius: 7px;
     background-color: white;
 
     .ant-collapse-item {
       width: 278px;
-      height: 50px;
 
       .ant-collapse-content {
         border: 1px solid #d9d9d9;
@@ -82,13 +81,17 @@
         }
       }
 
-      .ant-collapse-content-box .ant-input-group {
-        display: flex;
-        justify-content: space-between;
+      .ant-collapse-content {
+        border: none;
 
-        .ant-input {
-          border-radius: 5px;
-          width: 110px;
+        .ant-input-group {
+          display: flex;
+          justify-content: space-between;
+
+          .ant-input {
+            border-radius: 5px;
+            width: 110px;
+          }
         }
       }
     }

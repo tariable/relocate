@@ -1,10 +1,25 @@
 import React from 'react';
 import './MetroDistance.less';
-import { Select } from 'antd';
+import { Radio, Select } from 'antd';
 
 const { Option } = Select;
 
-const distanceTypeArr = [
+const timeOptions = [
+  {
+    value: '<5',
+  },
+  {
+    value: '<10',
+  },
+  {
+    value: '<15',
+  },
+  {
+    value: '<20',
+  },
+];
+
+const distanceTypeOptions = [
   {
     name: 'Неважно',
   },
@@ -19,18 +34,27 @@ const distanceTypeArr = [
 const MetroDistance: React.FC = () => (
   <div>
     <div className="metro-distance-title">
-      Расстояние до метро
+      Расстояние до метро, мин.
     </div>
     <Select
       size="large"
-      defaultValue={distanceTypeArr[0].name}
+      defaultValue={distanceTypeOptions[0].name}
     >
-      {distanceTypeArr.map((type) => (
+      {distanceTypeOptions.map((type) => (
         <Option value={type.name} key={type.name}>
           {type.name}
         </Option>
       ))}
     </Select>
+    <div className="metro-time-block">
+      <Radio.Group>
+        {timeOptions.map((time) => (
+          <Radio.Button key={time.value} value={time.value}>
+            {time.value}
+          </Radio.Button>
+        ))}
+      </Radio.Group>
+    </div>
   </div>
 );
 

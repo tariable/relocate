@@ -3,6 +3,7 @@ import './AccommodationCard.less';
 import {
   Image, Card, Badge, Typography,
 } from 'antd';
+import { Link } from 'react-router-dom';
 
 const { Paragraph } = Typography;
 type AccommodationCardType = {
@@ -20,7 +21,7 @@ type AccommodationCardType = {
 
 const AccommodationCard: React.FC<AccommodationCardType> = ({ accommodation }: AccommodationCardType) => {
   const {
-    price, description, floor, maxFloor, space, roomCount, address,
+    price, description, floor, maxFloor, space, roomCount, address, id,
   } = accommodation;
   return (
     <Card
@@ -31,34 +32,36 @@ const AccommodationCard: React.FC<AccommodationCardType> = ({ accommodation }: A
         </Image.PreviewGroup>
       )}
     >
-      <div className="metro-block">
-        <Badge color="#DDB836" text="Авиамоторная" />
-        <span>15 минут пешком</span>
-      </div>
-      <div className="price-block">
-        <span className="price">{price}</span>
-        ₽/мес
-      </div>
-      <div className="space-block">
-        <span>
-          {`${roomCount}-комн`}
-        </span>
-        <span>
-          {`${space}м`}
-          <sup>2</sup>
-        </span>
-        <span>
-          {`${floor}/${maxFloor} этаж`}
-        </span>
-      </div>
-      <Paragraph ellipsis={{ rows: 3 }}>
-        {address}
-      </Paragraph>
-      <div className="description">
+      <Link to={`/accommodation/${id}`}>
+        <div className="metro-block">
+          <Badge color="#DDB836" text="Авиамоторная" />
+          <span>15 минут пешком</span>
+        </div>
+        <div className="price-block">
+          <span className="price">{price}</span>
+          ₽/мес
+        </div>
+        <div className="space-block">
+          <span>
+            {`${roomCount}-комн`}
+          </span>
+          <span>
+            {`${space}м`}
+            <sup>2</sup>
+          </span>
+          <span>
+            {`${floor}/${maxFloor} этаж`}
+          </span>
+        </div>
         <Paragraph ellipsis={{ rows: 3 }}>
-          {description}
+          {address}
         </Paragraph>
-      </div>
+        <div className="description">
+          <Paragraph ellipsis={{ rows: 3 }}>
+            {description}
+          </Paragraph>
+        </div>
+      </Link>
     </Card>
   );
 };

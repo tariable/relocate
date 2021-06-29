@@ -29,6 +29,12 @@ type AccommodationType = {
   };
 };
 
+// const NextArrow = ({currentSlide, slideCount, ...props}: CustomArrowProps) => (
+//   <div {...props}>
+//     <i className="fas fa-arrow-circle-right"></i>
+//   </div>
+// );
+
 const AccommodationBlock: React.FC<AccommodationType> = ({ accommodation }: AccommodationType) => {
   const {
     id, price, description, title, floor, maxFloor, roomCount, address, space, images, owner, metro,
@@ -69,7 +75,7 @@ const AccommodationBlock: React.FC<AccommodationType> = ({ accommodation }: Acco
       <div className="image-block">
         <Carousel arrows dotPosition="top" nextArrow={<CaretRightOutlined />} prevArrow={<CaretLeftOutlined />}>
           {images.map((image) => (
-            <div>
+            <div key={image.src}>
               <Image height={650} key={image.src} src={image.src} />
             </div>
           ))}

@@ -1,65 +1,65 @@
 version: "3.8"
 services:
   api-gateway:
-    image: "traefik:v2.4.2"
+    image: traefik:v2.4.2
     command:
-      - "--log.level=DEBUG"   # only local env
-      - "--api"
-      - "--api=true"
-      - "--api.dashboard=true"
-      - "--api.insecure=true" # Don't do that in production
-      - "--providers.docker"
-      - "--entrypoints.web.address=:80"
+      - --log.level=DEBUG   # only local env
+      - --api
+      - --api=true
+      - --api.dashboard=true
+      - --api.insecure=true # Don't do that in production
+      - --providers.docker
+      - --entrypoints.web.address=:80
     labels: { }
     ports:
-      - "80:80"
-      - "8080:8080"
+      - 80:80
+      - 8080:8080
     volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock"
+      - /var/run/docker.sock:/var/run/docker.sock
 
   accommodations:
-    build: "./accommodation"
+    build: ./accommodation
     # image: # create image and deploy it to dockerHub - production
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.accommodations.rule=Host(`accommodations.localhost`)"
-      - "traefik.http.services.accommodations.loadbalancer.server.port=4000"
-      - "traefik.http.routers.accommodations.entrypoints=web"
+      - traefik.enable=true
+      - traefik.http.routers.accommodations.rule=Host(`accommodations.localhost`)
+      - traefik.http.services.accommodations.loadbalancer.server.port=4000
+      - traefik.http.routers.accommodations.entrypoints=web
 
   file-hostings:
-    build: "./file-hosting"
+    build: ./file-hosting
     # image: # create image and deploy it to dockerHub - production
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.file-hostings.rule=PathPrefix(`/media/`)"
+      - traefik.enable=true
+      - traefik.http.routers.file-hostings.rule=PathPrefix(`/media/`)
 
   users:
-    build: "./user"
+    build: ./user
     # image: # create image and deploy it to dockerHub - production
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.users.rule=Host(`users.localhost`)"
-      - "traefik.http.services.users.loadbalancer.server.port=4001"
-      - "traefik.http.routers.users.entrypoints=web"
+      - traefik.enable=true
+      - traefik.http.routers.users.rule=Host(`users.localhost`)
+      - traefik.http.services.users.loadbalancer.server.port=4001
+      - traefik.http.routers.users.entrypoints=web
 
   accommodation-db:
-    image: "postgres:${PGSQL_VERSION}"
-    environment:
-      - "POSTGRES_DB:${DB_ACCOMMODATION_NAME}"
-      - "POSTGRES_USER:${DB_ACCOMMODATION_USER}"
-      - "POSTGRES_PASSWORD:${DB_ACCOMMODATION_PASSWORD}"
+    image: postgres:${PGSQL_VERSION}
     ports:
-      - "5432:5432"
-  #    volumes:
-  #      - "/backup:/backup"
+      - 5432:5432
+    volumes:
+      - ./.database/pgsql-accommodation/data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: ${DB_ACCOMMODATION_NAME}
+      POSTGRES_USER: ${DB_ACCOMMODATION_USERNAME}
+      POSTGRES_PASSWORD: ${DB_ACCOMMODATION_PASSWORD}
 
   user-db:
-    image: "postgres:${PGSQL_VERSION}"
-    environment:
-      - "POSTGRES_DB:${DB_USER_NAME}"
-      - "POSTGRES_USER:${DB_USER_USER}"
-      - "POSTGRES_PASSWORD:${DB_USER_PASSWORD}"
+    image: postgres:${PGSQL_VERSION}
     ports:
-      - "5433:5433"
-#    volumes:
-#      - "/backup:/backup"
+      - 5433:5433
+    volumes:
+      - ./.database/pgsql-user/data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: ${DB_ACCOMMODATION_NAME}
+      POSTGRES_USER: ${DB_ACCOMMODATION_USERNAME}
+      POSTGRES_PASSWORD: ${DB_ACCOMMODATION_PASSWORD}

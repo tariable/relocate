@@ -7,16 +7,16 @@ import (
 )
 
 type Accommodation struct {
-	Id          int    `json:"id"`
-	Status      string `json:"status"`
-	Description string `json:"description"`
-	//Space       int64   `json:"space"`
-	//Price       int64   `json:"price"`
-	//Deposit     int64   `json:"deposit"`
-	//Floor       int64   `json:"floor"`
-	//MaxFloor    int64   `json:"max_floor"`
-	//RoomCount   int64   `json:"room_count"`
-	//Images      []Image `json:"images"`
+	Id          int     `json:"id"`
+	Status      string  `json:"status"`
+	Description string  `json:"description"`
+	Space       int64   `json:"space"`
+	Price       int64   `json:"price"`
+	Deposit     int64   `json:"deposit"`
+	Floor       int64   `json:"floor"`
+	MaxFloor    int64   `json:"max_floor"`
+	RoomCount   int64   `json:"room_count"`
+	Images      []Image `json:"images"`
 }
 
 type Image struct {

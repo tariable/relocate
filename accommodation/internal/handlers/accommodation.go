@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"Relocate/accommodation/internal/data"
+	"database/sql"
 	"log"
 	"net/http"
 	"regexp"
@@ -10,10 +11,11 @@ import (
 
 type Accommodation struct {
 	logger *log.Logger
+	db     *sql.DB
 }
 
-func NewAccommodation(logger *log.Logger) *Accommodation {
-	return &Accommodation{logger}
+func NewAccommodation(logger *log.Logger, db *sql.DB) *Accommodation {
+	return &Accommodation{logger, db}
 }
 
 func (accommodation *Accommodation) ServeHTTP(rw http.ResponseWriter, r *http.Request) {

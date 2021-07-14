@@ -7,7 +7,7 @@ CREATE TABLE announcements
     created_at    timestamp DEFAULT current_timestamp,
     updated_at    timestamp DEFAULT current_timestamp,
 
-    FOREIGN KEY (accommodation) REFERENCES `accommodation` (id) ON DELETE cascade,
-    FOREIGN KEY (option) REFERENCES `options` (id) ON DELETE cascade,
-    FOREIGN KEY (location) REFERENCES `locations` (id) ON DELETE cascade,
+    FOREIGN KEY (accommodation) REFERENCES accommodations (id) ON DELETE cascade,
+    FOREIGN KEY (option) REFERENCES options (id) ON DELETE cascade,
+    FOREIGN KEY (location) REFERENCES locations (id) ON DELETE cascade
 );

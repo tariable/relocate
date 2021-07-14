@@ -4,5 +4,5 @@ CREATE TABLE images
     accommodation_id int          NOT NULL,
     path             varchar(255) NOT NULL,
 
-    FOREIGN KEY accommodation_id REFERENCES `accommodations`(id) ON DELETE cascade
+    FOREIGN KEY (accommodation_id) REFERENCES accommodations (id) ON DELETE cascade
 );

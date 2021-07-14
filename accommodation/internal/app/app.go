@@ -2,7 +2,7 @@ package app
 
 import (
 	"Relocate/accommodation/internal/handlers"
-	"Relocate/accommodation/pkg/db"
+	"Relocate/accommodation/pkg/database"
 	"context"
 	"fmt"
 	"github.com/joho/godotenv"
@@ -21,7 +21,7 @@ func Run() {
 		logger.Fatal(fmt.Sprintf("Error loading .env file - %#v", err))
 	}
 
-	dbConnection, err := db.NewPostgresDB(db.Config{
+	db, err := database.NewPostgresDB(database.Config{
 		Host:     os.Getenv("DB_HOST"),
 		Port:     os.Getenv("DB_PORT"),
 		DBName:   os.Getenv("DB_DBNAME"),
@@ -31,12 +31,12 @@ func Run() {
 	})
 
 	if err != nil {
-		logger.Fatal(fmt.Sprintf("DB connection error - %#v --- %#v", dbConnection, err))
+		logger.Fatal(fmt.Sprintf("DB connection - error - %#v --- %#v", db, err))
 	}
 
-	logger.Println("db connected")
+	logger.Println("DB connection - successful")
 
-	accommodationHandler := handlers.NewAccommodation(logger, dbConnection)
+	accommodationHandler := handlers.NewAccommodation(logger, db)
 
 	serverMux := http.NewServeMux()
 	serverMux.HandleFunc("/", accommodationHandler.ServeHTTP)

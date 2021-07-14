@@ -7,5 +7,5 @@ CREATE TABLE subways
     transport_type varchar(255) NOT NULL,
     transport_time varchar(255) NOT NULL,
 
-    FOREIGN KEY location_id REFERENCES `locations`(id) ON DELETE cascade
+    FOREIGN KEY (location_id) REFERENCES locations (id) ON DELETE cascade
 );

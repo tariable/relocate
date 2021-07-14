@@ -1,1 +1,1 @@
-DROP TABLE subways
+DROP TABLE subways CASCADE

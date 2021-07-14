@@ -1,9 +1,9 @@
 CREATE TABLE options
 (
     id                int PRIMARY KEY,
-    rentTerm          varchar(255) DEFAULT long,
-    wcType            varchar(255) DEFAULT combined,
-    bathType          varchar(255) DEFAULT shower,
+    rentTerm          varchar(255) DEFAULT 'long',
+    wcType            varchar(255) DEFAULT 'combined',
+    bathType          varchar(255) DEFAULT 'shower',
     balcony           boolean      DEFAULT false,
     isAllowedPets     boolean      DEFAULT false,
     isAllowedSmoking  boolean      DEFAULT false,

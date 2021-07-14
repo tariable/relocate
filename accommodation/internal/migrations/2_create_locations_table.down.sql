@@ -1,1 +1,1 @@
-DROP TABLE locations;
+DROP TABLE locations CASCADE ;

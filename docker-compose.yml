@@ -17,6 +17,28 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 
+  accommodation-db:
+    image: postgres:${PGSQL_VERSION}
+    ports:
+      - 5432:5432
+    volumes:
+      - ./.database/pgsql-accommodation/data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: ${DB_ACCOMMODATION_NAME}
+      POSTGRES_USER: ${DB_ACCOMMODATION_USERNAME}
+      POSTGRES_PASSWORD: ${DB_ACCOMMODATION_PASSWORD}
+
+  user-db:
+    image: postgres:${PGSQL_VERSION}
+    ports:
+      - 5433:5433
+    volumes:
+      - ./.database/pgsql-user/data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: ${DB_ACCOMMODATION_NAME}
+      POSTGRES_USER: ${DB_ACCOMMODATION_USERNAME}
+      POSTGRES_PASSWORD: ${DB_ACCOMMODATION_PASSWORD}
+
   accommodations:
     build: ./accommodation
     # image: # create image and deploy it to dockerHub - production
@@ -41,25 +63,3 @@ services:
       - traefik.http.routers.users.rule=Host(`users.localhost`)
       - traefik.http.services.users.loadbalancer.server.port=4001
       - traefik.http.routers.users.entrypoints=web
-
-  accommodation-db:
-    image: postgres:${PGSQL_VERSION}
-    ports:
-      - 5432:5432
-    volumes:
-      - ./.database/pgsql-accommodation/data:/var/lib/postgresql/data
-    environment:
-      POSTGRES_DB: ${DB_ACCOMMODATION_NAME}
-      POSTGRES_USER: ${DB_ACCOMMODATION_USERNAME}
-      POSTGRES_PASSWORD: ${DB_ACCOMMODATION_PASSWORD}
-
-  user-db:
-    image: postgres:${PGSQL_VERSION}
-    ports:
-      - 5433:5433
-    volumes:
-      - ./.database/pgsql-user/data:/var/lib/postgresql/data
-    environment:
-      POSTGRES_DB: ${DB_ACCOMMODATION_NAME}
-      POSTGRES_USER: ${DB_ACCOMMODATION_USERNAME}
-      POSTGRES_PASSWORD: ${DB_ACCOMMODATION_PASSWORD}
